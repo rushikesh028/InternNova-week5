@@ -1,0 +1,43 @@
+import java.io.*;
+
+public class Task4_FileHandling {
+
+    public static void main(String[] args) {
+
+        String fileName = "students.txt";
+
+        try {
+            // Creating and writing to the file
+            FileWriter writer = new FileWriter(fileName);
+
+            writer.write("Student ID: 101\n");
+            writer.write("Student Name: Rushikesh Asawale\n");
+            writer.write("Course: B.Tech Information Technology\n");
+            writer.write("Marks: 85\n");
+
+            writer.close();
+
+            System.out.println("Student information written successfully.");
+
+            // Reading from the file
+            FileReader reader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+
+            System.out.println("\nStudent Records");
+            System.out.println("----------------");
+
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            bufferedReader.close();
+
+        } catch (IOException e) {
+
+            System.out.println("Error while handling the file.");
+            System.out.println(e.getMessage());
+        }
+    }
+}
