@@ -1,0 +1,74 @@
+interface Payment {
+
+    void pay(double amount);
+
+    void showPaymentDetails();
+}
+
+class UPIPayment implements Payment {
+
+    private String upiId;
+    private double amount;
+
+    UPIPayment(String upiId) {
+        this.upiId = upiId;
+    }
+
+    @Override
+    public void pay(double amount) {
+        this.amount = amount;
+        System.out.println("UPI Payment Successful");
+        System.out.println("Amount: ₹" + amount);
+    }
+
+    @Override
+    public void showPaymentDetails() {
+        System.out.println("Payment Method: UPI");
+        System.out.println("UPI ID: " + upiId);
+        System.out.println("Amount: ₹" + amount);
+    }
+}
+
+class CardPayment implements Payment {
+
+    private String cardNumber;
+    private double amount;
+
+    CardPayment(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    @Override
+    public void pay(double amount) {
+        this.amount = amount;
+        System.out.println("Card Payment Successful");
+        System.out.println("Amount: ₹" + amount);
+    }
+
+    @Override
+    public void showPaymentDetails() {
+        System.out.println("Payment Method: Card");
+        System.out.println("Card Number: " + cardNumber);
+        System.out.println("Amount: ₹" + amount);
+    }
+}
+
+public class Task2_Interface {
+
+    public static void main(String[] args) {
+
+        // UPI Payment
+        Payment upi = new UPIPayment("rushikesh@upi");
+
+        upi.pay(1500);
+        upi.showPaymentDetails();
+
+        System.out.println();
+
+        // Card Payment
+        Payment card = new CardPayment("XXXX-XXXX-1234");
+
+        card.pay(2500);
+        card.showPaymentDetails();
+    }
+}
